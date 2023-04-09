@@ -6,6 +6,7 @@ public class Main {
     public static void main(String[] args) {
         lienzo();
         colorLineas();
+        lineas();
 
 
     }
@@ -42,6 +43,38 @@ public class Main {
 
         double posFinalX = min + (max - min) * Math.random();
         double posFinalY = min + (max - min) * Math.random();
+
+        while (true) {
+            if (Math.abs(posInicialX+ velocidadX0) > 1.0) {
+                velocidadX0 = -velocidadX0;
+            }
+            if (Math.abs(posInicialY + velocidadY0) > 1.0) {
+                velocidadY0 = -velocidadY0;
+            }
+            if (Math.abs(posFinalX + velocidadX1) > 1.0){
+                velocidadX1 = -velocidadX1;
+            }
+            if ( Math.abs(posFinalY + velocidadY1) > 1.0){
+                velocidadY1 = -velocidadY1;
+            }
+
+            int contador = 0;
+            for(int i = 0; i < 6; i++){
+                contador++;
+                posInicialX += velocidadX0;
+                posInicialY += velocidadY0;
+                posFinalX += velocidadX1;
+                posFinalY += velocidadY1;
+
+
+                StdDraw.line(posInicialX,posInicialY,posFinalX,posFinalY);
+                StdDraw.show();
+                StdDraw.pause(50);
+            }
+
+
+
+        }
 
 
 
